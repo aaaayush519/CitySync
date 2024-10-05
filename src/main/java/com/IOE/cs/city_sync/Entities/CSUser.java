@@ -1,4 +1,4 @@
-package com.IOE.cs.city_sync.entities;
+package com.IOE.cs.city_sync.Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="Users")
-public class CSUsers {
+public class CSUser {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,13 +16,25 @@ public class CSUsers {
 	@Column(name="NAME")
 	private String name;
 
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "Department_ID", referencedColumnName = "id")
 	private Department department;
 
 	@Column(name="EMAIL")
 	private String email;
-	
+
+	@Override
+	public String toString() {
+		return "CSUser{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", department=" + department +
+				", email='" + email + '\'' +
+				", role='" + role + '\'' +
+				", password='" + password + '\'' +
+				'}';
+	}
+
 	@Column(name="ROLE")
 	private String role;
 	

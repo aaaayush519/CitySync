@@ -1,4 +1,4 @@
-package com.IOE.cs.city_sync.entities;
+package com.IOE.cs.city_sync.Entities;
 
 import java.util.Date;
 
