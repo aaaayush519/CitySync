@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "SHARED_RESOURCES")
-public class SharedResources {
+public class SharedResource {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +15,7 @@ public class SharedResources {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "RESOURCE_Id" , referencedColumnName = "id")
-	private Resources ResourceID;
+	private Resource ResourceID;
 	
 	@Column(name = "Shared_Quantity")
 	private Integer sharedQuantity;

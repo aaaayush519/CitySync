@@ -10,15 +10,13 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectDTO {
+public class ProjResDTO {
 
-    private Integer id;
-
-    private String name;
+    private String projectName;
 
     private Integer departmentid;
 
-    private String Description;
+    private String projDescription;
 
     private String location;
 
@@ -32,4 +30,14 @@ public class ProjectDTO {
     private LocalDate uploadDate;
 
     private Boolean isInterdepartmental;
+
+    private String resourceName;
+
+    private Integer projectId;
+
+    private String resDescription;
+
+    private Boolean isAvailable;
+
+    private Integer quantity;
 }

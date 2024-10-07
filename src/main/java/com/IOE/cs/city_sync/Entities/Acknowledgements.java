@@ -31,7 +31,6 @@ public class Acknowledgements {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "DEPARTMENT_ID", referencedColumnName = "id")
-//	@Column(name="DEPARTMENT_ID")
 	private Department DepartmentId;
 	
 	@Column(name="REMARK")
