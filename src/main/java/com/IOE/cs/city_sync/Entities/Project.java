@@ -1,9 +1,10 @@
 package com.IOE.cs.city_sync.Entities;
 
-import java.util.Date;
-
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -27,15 +28,18 @@ public class Project {
 	
 	@Column(name="LOCATION")
 	private String location;
-	
+
 	@Column(name="PROJECT_START_DATE")
-	private Date startDate;
-	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate startDate;
+
 	@Column(name="PROJECT_END_DATE")
-	private Date endDate;
-	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate endDate;
+
 	@Column(name="UPLOAD_DATE")
-	private Date uploadDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate uploadDate;
 	
 	@Column(name="isInterdepartmental")
 	private Boolean isInterdepartmental;
