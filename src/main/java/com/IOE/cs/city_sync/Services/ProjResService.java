@@ -50,12 +50,3 @@ public class ProjResService {
 
     }
 }
-
-
-//        Resource resource = new Resource();
-//        resource.setProject(project);
-//        resource.setName(projResDTO.getResourceName());
-//        resource.setIsAvailable(true);
-//        resource.setQuantity(projResDTO.getQuantity());
-//        resource.setDescription(projResDTO.getResDescription());
-//        resourceRepo.save(resource);
