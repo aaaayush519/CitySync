@@ -8,14 +8,14 @@ import lombok.Data;
 @Table(name = "RESOURCES")
 public class Resource {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="ID")
 	private Integer id;
 	
 	@Column(name="NAME")
 	private String name;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Project_Id" , referencedColumnName = "id")
 	private Project project;
 	
@@ -26,5 +26,5 @@ public class Resource {
 	private Boolean isAvailable;
 	
 	@Column(name="Quantity")
-	private Integer Quantity;
+	private String Quantity;
 }

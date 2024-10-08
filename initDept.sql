@@ -1,4 +1,4 @@
-use citysync;
+
 INSERT INTO
     Departments(id,name,description,contact_no)
 VALUES

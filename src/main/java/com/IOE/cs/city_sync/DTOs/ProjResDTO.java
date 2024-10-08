@@ -1,11 +1,13 @@
 package com.IOE.cs.city_sync.DTOs;
 
+import com.IOE.cs.city_sync.Entities.Resource;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -31,13 +33,5 @@ public class ProjResDTO {
 
     private Boolean isInterdepartmental;
 
-    private String resourceName;
-
-    private Integer projectId;
-
-    private String resDescription;
-
-    private Boolean isAvailable;
-
-    private Integer quantity;
+    private List<ResourceDTO> resources;
 }
