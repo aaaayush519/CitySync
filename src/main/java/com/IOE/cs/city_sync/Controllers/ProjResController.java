@@ -25,10 +25,6 @@ public class ProjResController {
 
     @PostMapping("/project-submit")
     public String projectSubmission(@ModelAttribute ProjResDTO projectDTO) {
-
-
-        System.out.println(projectDTO.getDepartmentid());
-
         projResService.saveProjectResource(projectDTO);
         return "result";
     }

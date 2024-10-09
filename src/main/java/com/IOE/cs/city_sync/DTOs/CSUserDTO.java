@@ -1,8 +1,8 @@
 package com.IOE.cs.city_sync.DTOs;
 
-import com.IOE.cs.city_sync.Entities.Department;
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +20,5 @@ public class CSUserDTO {
     private String role;
 
     private String password;
+    // Encryption is yet to be added
 }

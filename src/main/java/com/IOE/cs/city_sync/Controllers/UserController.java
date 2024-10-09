@@ -7,11 +7,31 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
     @Autowired
     private CSUserService csUserService;
+
+    @GetMapping("/home")
+    @ResponseBody
+    public String home(){
+        return "Welcome to CitySync";
+    }
+
+    @GetMapping("/admin")
+    @ResponseBody
+    public String adminfunction(){
+        return "Hello ADMIN ! Welcome to CitySync";
+    }
+
+    @GetMapping("/user")
+    @ResponseBody
+    public String userfunction(){
+        return "Hello USER ! Welcome to CitySync";
+    }
+
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){

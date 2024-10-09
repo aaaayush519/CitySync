@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CSUserRepo extends JpaRepository<CSUser,Integer> {
 
     CSUser save(CSUser csUser);
+
+    CSUser findByUsername(String username);
 }

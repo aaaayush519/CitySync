@@ -23,6 +23,16 @@ public class CSUser {
 	@Column(name="EMAIL")
 	private String email;
 
+	@Column(name="USERNAME")
+	private String username;
+
+	public CSUser() {
+
+	}
+
+	public void setUsername(){
+		this.username = this.email.substring(0,this.email.indexOf('@'));
+	}
 	@Override
 	public String toString() {
 		return "CSUser{" +
@@ -37,7 +47,17 @@ public class CSUser {
 
 	@Column(name="ROLE")
 	private String role;
-	
+
+//	public CSUser(Integer id, String password, String role, String username, String email, Department department, String name) {
+//		this.id = id;
+//		this.password = password;
+//		this.role = role;
+//		this.username = email.substring(0,email.indexOf('@'));
+//		this.email = email;
+//		this.department = department;
+//		this.name = name;
+//	}
+
 	@Column(name="PASSWORD")
 	private String password;
 }
