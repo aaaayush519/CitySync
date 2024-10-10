@@ -29,11 +29,14 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/home").permitAll()
+                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/register").permitAll()
+                        .requestMatchers("/home").permitAll()
                         .requestMatchers("/user-submit").permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
-                        .requestMatchers("/user").hasRole("USER")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/user/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> {
@@ -44,7 +47,9 @@ public class SecurityConfig {
                             .permitAll();
                 })
                 .build();
+
     }
+
 
     @Bean
     public AuthenticationProvider authenticationProvider() {

@@ -17,7 +17,10 @@ public class UserController {
     private CSUserService csUserService;
 
 
-    @GetMapping("/greet")
+
+
+
+    @GetMapping({"","/greet"})
     @ResponseBody
     public String userWelcome(){
         return "Hello USER ! Welcome to CitySync";

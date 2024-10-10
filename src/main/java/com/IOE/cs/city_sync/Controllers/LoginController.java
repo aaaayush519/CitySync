@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class LoginController {
 
-    @GetMapping({"/","/login"})
+    @GetMapping("/login")
     public String loginPage(){
         return "login";
     }
 
-    @GetMapping("/home")
+    @GetMapping({"/","/home"})
     @ResponseBody
     public String generalwelcome(){
         return "Welcome to CitySync";

@@ -10,4 +10,6 @@ public interface ProjectRepo extends JpaRepository<Project, Integer> {
 
     @Override
     Project getById(Integer id);
+
+    Project getProjectById(Integer projectId);
 }

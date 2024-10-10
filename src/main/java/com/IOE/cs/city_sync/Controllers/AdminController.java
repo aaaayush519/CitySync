@@ -17,7 +17,7 @@ public class AdminController {
     @Autowired
     private CSUserService csUserService;
 
-    @GetMapping("/greet")
+    @GetMapping({"","/greet"})
     @ResponseBody
     public String adminwelcome(){
         return "Hello ADMIN ! Welcome to CitySync";

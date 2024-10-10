@@ -4,6 +4,7 @@ import java.util.Date;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @Entity
@@ -22,9 +23,14 @@ public class Meetings {
 	private String agenda;
 		
 	@Column(name="MEETING_DATE")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date meetingDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="PROJECT_ID", referencedColumnName = "id")
 	private Project project;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="ADDED_BY", referencedColumnName = "id")
+	private CSUser addedBy;
 }
