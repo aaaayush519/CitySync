@@ -11,17 +11,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/admin")
+public class AdminController {
+
     @Autowired
     private CSUserService csUserService;
 
-
     @GetMapping("/greet")
     @ResponseBody
-    public String userWelcome(){
-        return "Hello USER ! Welcome to CitySync";
+    public String adminwelcome(){
+        return "Hello ADMIN ! Welcome to CitySync";
     }
 
+    @GetMapping("/register")
+    public String showRegistrationForm(Model model){
+        CSUserDTO csuserDto = new CSUserDTO();
+        model.addAttribute("csuserDto", csuserDto);
+        return "register";
+    }
 
+    @PostMapping("/user-submit")
+    public String userSubmission(CSUserDTO csuserdto , Model model){
+        csUserService.addUser(csuserdto);
+        model.addAttribute("message","Signup successful for "+ csuserdto.getName());
+        return "result";
+    }
 }

@@ -11,4 +11,10 @@ public class LoginController {
     public String loginPage(){
         return "login";
     }
+
+    @GetMapping("/home")
+    @ResponseBody
+    public String generalwelcome(){
+        return "Welcome to CitySync";
+    }
 }

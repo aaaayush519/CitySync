@@ -12,7 +12,7 @@
 <h1 style="justify-content: center">Registration Form</h1>
 
 <div class="container my-40">
-    <form th:action="@{/user-submit}" method="post" th:object="${csuserDto}" class="row g-3">
+    <form th:action="@{/admin/user-submit}" method="post" th:object="${csuserDto}" class="row g-3">
         <div class="col-12">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Cillian Murphy" th:field="*{name}">

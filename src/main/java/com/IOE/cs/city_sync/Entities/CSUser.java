@@ -2,6 +2,7 @@ package com.IOE.cs.city_sync.Entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
 @Entity
@@ -48,6 +49,9 @@ public class CSUser {
 	@Column(name="ROLE")
 	private String role;
 
+	public void setRole(String role) {
+		this.role = role.toUpperCase();
+	}
 //	public CSUser(Integer id, String password, String role, String username, String email, Department department, String name) {
 //		this.id = id;
 //		this.password = password;
@@ -56,6 +60,11 @@ public class CSUser {
 //		this.email = email;
 //		this.department = department;
 //		this.name = name;
+//	}
+
+//	public void setPassword(String password) {
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		this.password = encoder.encode(password);
 //	}
 
 	@Column(name="PASSWORD")

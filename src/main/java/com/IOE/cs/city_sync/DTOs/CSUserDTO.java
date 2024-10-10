@@ -20,5 +20,5 @@ public class CSUserDTO {
     private String role;
 
     private String password;
-    // Encryption is yet to be added
+
 }

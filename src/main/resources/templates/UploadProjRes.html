@@ -14,7 +14,7 @@
 <body>
 <h1 style="justify-content: center">Project & Resource Upload Form</h1>
 <div class="container my-40">
-    <form th:action="@{/project-submit}" method="post" th:object="${projResDTO}" class="row g-3" id="form">
+    <form th:action="@{/user/project-submit}" method="post" th:object="${projResDTO}" class="row g-3" id="form">
         <div class="col-6">
             <label for="projectName" class="form-label">Project Name</label>
             <input type="text" class="form-control" id="projectName" placeholder="Road Construction"
