@@ -1,30 +1,18 @@
 package com.IOE.cs.city_sync.Controllers;
 
-import com.IOE.cs.city_sync.DTOs.CSUserDTO;
-import com.IOE.cs.city_sync.Services.CSUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
-    private CSUserService csUserService;
 
-
-
-
-
-    @GetMapping({"","/greet"})
-    @ResponseBody
-    public String userWelcome(){
-        return "Hello USER ! Welcome to CitySync";
+    @GetMapping("")
+    public String userPage(){
+        return "user-rights";
     }
 
-
+    // Upload Projecct
+    // Upload Meetings
 }

@@ -1,7 +1,7 @@
 package com.IOE.cs.city_sync.Controllers;
 
 import com.IOE.cs.city_sync.DTOs.ProjResDTO;
-import com.IOE.cs.city_sync.Services.ProjResService;
+import com.IOE.cs.city_sync.Services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,22 +11,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/user")
-public class ProjResController {
+@RequestMapping("/user/project")
+public class ProjectController {
 
     @Autowired
-    private ProjResService projResService;
+    private ProjectService projectService;
 
-    @GetMapping("/upload-project")
+    @GetMapping("/upload")
     public String uploadProject(Model model) {
         ProjResDTO projResDTO = new ProjResDTO();
         model.addAttribute("projResDTO", projResDTO);
-        return "UploadProjRes";
+        return "UploadProject";
     }
 
-    @PostMapping("/project-submit")
+    @PostMapping("/submit")
     public String projectSubmission(@ModelAttribute ProjResDTO projectDTO) {
-        projResService.saveProjectResource(projectDTO);
+        System.out.println(projectDTO.toString());
+        projectService.saveProjectResource(projectDTO);
         return "result";
     }
 }

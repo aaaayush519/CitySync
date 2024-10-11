@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <title>Registration and Login System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">User rights</a>
+  </div>
+</nav>
+<br /><br />
+<div class="container">
+  <div class="row">
+    <h1 class="text-center"> User rights </h1>
+  </div>
+  <button type="button" class="btn btn-primary">
+    <a th:href="@{/user/project/upload}" style="color: inherit; text-decoration: none;">Add Project</a>
+  </button>
+
+  <button type="button" class="btn btn-primary">
+    <a th:href="@{/user/meetings/upload}" style="color: inherit; text-decoration: none;">Add Meetings</a>
+  </button>
+</div>
+</body>
+</html>

@@ -9,22 +9,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/user/meetings")
 public class MeetingController {
 
     @Autowired
     MeetingService meetingService;
-    @GetMapping("/upload-meeting")
+    @GetMapping("/upload")
     public String scheduleMeeting(Model model){
         MeetingsDTO meetingsDTO = new MeetingsDTO();
         model.addAttribute(meetingsDTO);
         return "meeting";
     }
 
-    @PostMapping("/meeting-submit")
-    public void saveMeeting(@ModelAttribute MeetingsDTO meetingsDTO){
+    @PostMapping("/submit")
+    public String saveMeeting(@ModelAttribute MeetingsDTO meetingsDTO , Model model){
         meetingService.addMeeting(meetingsDTO);
-        System.out.println(meetingsDTO.toString());
+        model.addAttribute("message" , "added meeting"+meetingsDTO);
+        return "result";
     }
 }

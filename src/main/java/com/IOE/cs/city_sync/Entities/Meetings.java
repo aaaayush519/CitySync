@@ -1,6 +1,7 @@
 package com.IOE.cs.city_sync.Entities;
 
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -32,5 +33,13 @@ public class Meetings {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="ADDED_BY", referencedColumnName = "id")
-	private CSUser addedBy;
+	private CSUser addedBy;  //// Will define the department
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(
+			name = "meeting_department",
+			joinColumns = @JoinColumn(name = "MEETINGS_ID"),
+			inverseJoinColumns = @JoinColumn(name = "DEPARTMENT_ID")
+	)
+	private List<Department> participatingDepartment; // Saving the Participant's just with their id's for now 11-10-2024
 }

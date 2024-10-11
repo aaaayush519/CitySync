@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/admin")
@@ -17,23 +16,22 @@ public class AdminController {
     @Autowired
     private CSUserService csUserService;
 
-    @GetMapping({"","/greet"})
-    @ResponseBody
-    public String adminwelcome(){
-        return "Hello ADMIN ! Welcome to CitySync";
+    @GetMapping("")
+    public String adminPage(){
+        return "admin-rights";
     }
-
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model){
+    @GetMapping({"/register-user"})
+    public String registerUser(Model model){
         CSUserDTO csuserDto = new CSUserDTO();
         model.addAttribute("csuserDto", csuserDto);
         return "register";
     }
 
-    @PostMapping("/user-submit")
+    @PostMapping("/add-user")
     public String userSubmission(CSUserDTO csuserdto , Model model){
         csUserService.addUser(csuserdto);
         model.addAttribute("message","Signup successful for "+ csuserdto.getName());
         return "result";
     }
+
 }

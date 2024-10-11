@@ -33,5 +33,5 @@ public class ProjResDTO {
 
     private Boolean isInterdepartmental;
 
-    private List<ResourceDTO> resources;
+    private List<ResourceDTO> resourcesdto;
 }

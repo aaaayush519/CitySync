@@ -1,8 +1,5 @@
 package com.IOE.cs.city_sync.DTOs;
 
-import com.IOE.cs.city_sync.Entities.CSUser;
-import com.IOE.cs.city_sync.Entities.Department;
-import com.IOE.cs.city_sync.Entities.Project;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +23,7 @@ public class MeetingsDTO {
 
     private Integer projectId;
 
-    private String addedBy;
+    private String addedBy;   // will define the Owner department
 
-    private List<Department> participatingDepartments;
+    private List<Integer> participatingDeptId ;
 }

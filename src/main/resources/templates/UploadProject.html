@@ -14,7 +14,7 @@
 <body>
 <h1 style="justify-content: center">Project & Resource Upload Form</h1>
 <div class="container my-40">
-    <form th:action="@{/user/project-submit}" method="post" th:object="${projResDTO}" class="row g-3" id="form">
+    <form th:action="@{/user/project/submit}" method="post" th:object="${projResDTO}" class="row g-3" id="form">
         <div class="col-6">
             <label for="projectName" class="form-label">Project Name</label>
             <input type="text" class="form-control" id="projectName" placeholder="Road Construction"
@@ -54,18 +54,18 @@
             <div class="col-6">
                 <label for="resourceName1" class="form-label">Resource1 Name</label>
                 <input type="text" class="form-control" id="resourceName1" placeholder="Iron Rods ,Cement...."
-                       name="resources[0].resourceName">
+                       name="resourcesdto[0].resourceName">
             </div>
 
             <div class="col-6">
                 <label for="quantity1" class="form-label">Resource1 Quantity</label>
                 <input type="text" class="form-control" id="quantity1" placeholder="100kgs, 50 tonnes"
-                       name="resources[0].quantity">
+                       name="resourcesdto[0].quantity">
             </div>
 
             <div class="col-12">
                 <label for="resDescription1" class="form-label">Resource1 Description</label>
-                <textarea class="form-control" id="resDescription1" name="resources[0].resDescription"
+                <textarea class="form-control" id="resDescription1" name="resourcesdto[0].resDescription"
                           placeholder="Give a brief description of the project">Description</textarea>
             </div>
 
@@ -98,7 +98,7 @@
         newNameLabel.textContent = 'Resource' + a + ' Name';
         const newNameInput = document.createElement('input');
         newNameInput.type = 'text';
-        newNameInput.name = 'resources[' + a + '].resourceName';
+        newNameInput.name = 'resourcesdto[' + a + '].resourceName';
         newNameInput.placeholder = 'Iron Rods ,Cement....';
 
 
@@ -111,7 +111,7 @@
         newQtLabel.textContent = 'Resource' + a + ' Quantity';
         const newQtInput = document.createElement('input');
         newQtInput.type = 'text';
-        newQtInput.name = 'resources[' + a + '].quantity';
+        newQtInput.name = 'resourcesdto[' + a + '].quantity';
         newQtInput.placeholder = '100kgs, 50 tonnes';
         //append
         newQtDiv.appendChild(newQtLabel);
@@ -122,7 +122,7 @@
         newDesLabel.textContent = 'Resource' + a + ' Description';
         const newDesInput = document.createElement('input');
         newDesInput.type = 'text';
-        newDesInput.name = 'resources[' + a + '].resDescription';
+        newDesInput.name = 'resourcesdto[' + a + '].resDescription';
         newDesInput.placeholder = 'Description';
         //append
         newDesDiv.appendChild(newDesLabel);

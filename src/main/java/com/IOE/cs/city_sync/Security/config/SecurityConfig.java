@@ -47,9 +47,7 @@ public class SecurityConfig {
                             .permitAll();
                 })
                 .build();
-
     }
-
 
     @Bean
     public AuthenticationProvider authenticationProvider() {

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 
 @Service
-public class ProjResService {
+public class ProjectService {
     @Autowired
     private ProjectRepo projectRepo;
     @Autowired
@@ -36,15 +36,13 @@ public class ProjResService {
 
         // Resource
 
-        for (ResourceDTO resourceDTO : projResDTO.getResources()) {
-            System.out.println(resourceDTO.toString());
+        for (ResourceDTO resourceDTO : projResDTO.getResourcesdto()) {
             Resource resource = new Resource();
             resource.setProject(projectRepo.getById(project.getId()));
             resource.setName(resourceDTO.getResourceName());
             resource.setQuantity(resourceDTO.getQuantity());
             resource.setDescription(resourceDTO.getResDescription());
             resource.setIsAvailable(true);
-            System.out.println(resource.toString());
             resourceRepo.save(resource);
         }
 
