@@ -1,12 +1,15 @@
 package com.IOE.cs.city_sync.Services;
 
 import com.IOE.cs.city_sync.DTOs.CSUserDTO;
+import com.IOE.cs.city_sync.DTOs.UserListDTO;
 import com.IOE.cs.city_sync.Entities.CSUser;
 import com.IOE.cs.city_sync.Repos.CSUserRepo;
 import com.IOE.cs.city_sync.Repos.DepartmentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CSUserService {
@@ -32,6 +35,10 @@ public class CSUserService {
 
         csUser.setDepartment(departmentRepo.getDepartmentById(csUserDTO.getDepartmentid()));
         csUserRepo.save(csUser);
+    }
+
+    public List<UserListDTO> getAllUsers(){
+        return csUserRepo.getAllUsers();
     }
 
 }
