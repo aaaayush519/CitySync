@@ -9,13 +9,16 @@ import lombok.NoArgsConstructor;
 
 public class DepartmentListDTO {
 
+    private Integer id;
+
     private String name;
 
     private String description;
 
     private Long phoneNumber;
 
-    public DepartmentListDTO(String name, String description, Long phoneNumber) {
+    public DepartmentListDTO(Integer id , String name, String description, Long phoneNumber) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.phoneNumber = phoneNumber;

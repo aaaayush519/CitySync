@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface DepartmentRepo extends JpaRepository<Department,Integer> {
+public interface DepartmentRepo extends JpaRepository<Department, Integer> {
 
     Department getDepartmentById(Integer id);
 
-    @Query("SELECT new com.IOE.cs.city_sync.DTOs.DepartmentListDTO(d.name, d.Description ,d.PhoneNumber  ) from Department d")
+    @Query("SELECT new com.IOE.cs.city_sync.DTOs.DepartmentListDTO(d.id , d.name, d.Description ,d.PhoneNumber  ) from Department d")
     List<DepartmentListDTO> getAllDepartments();
+
 }

@@ -21,11 +21,10 @@
         <div class="col-12">
             <label for="department" class="form-label">Department</label>
             <select id="department" class="form-select" th:field="*{departmentid}" required>
-                <option value="" selected>Select a Department</option>
-                <option value="1">Department of Health</option>
-                <option value="2">Water Department</option>
-                <option value="3">Department of Garbage Collection</option>
-                <option value="4">Public Works Department</option>
+                    <option value="" selected>Select a Department</option>
+            <th:block th:each="department : ${departments}">
+                    <option th:value="${department.id}" th:text="${department.name}">Public Works Department</option>
+            </th:block>
             </select>
         </div>
         <div class="col-12">

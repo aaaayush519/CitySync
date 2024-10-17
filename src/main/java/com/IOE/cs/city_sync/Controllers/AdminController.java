@@ -1,10 +1,11 @@
 package com.IOE.cs.city_sync.Controllers;
 
 import com.IOE.cs.city_sync.DTOs.CSUserDTO;
+import com.IOE.cs.city_sync.DTOs.DepartmentDTO;
 import com.IOE.cs.city_sync.DTOs.DepartmentListDTO;
 import com.IOE.cs.city_sync.DTOs.UserListDTO;
 import com.IOE.cs.city_sync.Services.CSUserService;
-import com.IOE.cs.city_sync.Services.DepartmentServices;
+import com.IOE.cs.city_sync.Services.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,17 +22,22 @@ public class AdminController {
     @Autowired
     private CSUserService csUserService;
 
+    @Autowired
+    private DepartmentService departmentService;
 
 
     @GetMapping("")
     public String adminPage(){
         return "admin-rights";
     }
+
     @GetMapping({"/register-user"})
     public String registerUser(Model model){
         CSUserDTO csuserDto = new CSUserDTO();
+        List<DepartmentListDTO> departmentListDTOS = departmentService.getAllDepartments();
+        model.addAttribute("departments" , departmentListDTOS);
         model.addAttribute("csuserDto", csuserDto);
-        return "register";
+        return "registerUser";
     }
 
     @PostMapping("/add-user")
@@ -48,6 +54,19 @@ public class AdminController {
         return "showUsers";
     }
 
+    @GetMapping("/register-department")
+    public String registerDepartment(Model model){
+        DepartmentDTO departmentDto = new DepartmentDTO();
+        model.addAttribute("departmentdto" , departmentDto);
+        return "registerDept";
+    }
+
+    @PostMapping("/add-department")
+    public String addDepartment(DepartmentDTO departmentdto , Model model){
+        departmentService.addDepartment(departmentdto);
+        model.addAttribute("message", "Deparatment Registration successful for"+departmentdto.getName());
+        return "result";
+    }
 
 
 }

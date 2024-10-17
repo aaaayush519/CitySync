@@ -1,6 +1,7 @@
 package com.IOE.cs.city_sync.Services;
 
 import com.IOE.cs.city_sync.DTOs.ProjResDTO;
+import com.IOE.cs.city_sync.DTOs.ProjectListDTO;
 import com.IOE.cs.city_sync.DTOs.ResourceDTO;
 import com.IOE.cs.city_sync.Entities.Project;
 import com.IOE.cs.city_sync.Entities.Resource;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class ProjectService {
@@ -26,6 +28,7 @@ public class ProjectService {
         Project project = new Project();
         project.setName(projResDTO.getProjectName());
         project.setDepartment(departmentrepo.getDepartmentById(projResDTO.getDepartmentid()));
+        System.out.println("This is department"+project.getDepartment());                    // Marked
         project.setDescription(projResDTO.getProjDescription());
         project.setStartDate(projResDTO.getStartDate());
         project.setEndDate(projResDTO.getEndDate());
@@ -45,6 +48,11 @@ public class ProjectService {
             resource.setIsAvailable(true);
             resourceRepo.save(resource);
         }
-
     }
+
+    public List<ProjectListDTO> showProjects(){
+        return projectRepo.showProjects();
+    }
+
+
 }

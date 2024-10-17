@@ -1,6 +1,9 @@
 package com.IOE.cs.city_sync.Controllers;
 
+import com.IOE.cs.city_sync.DTOs.DepartmentListDTO;
 import com.IOE.cs.city_sync.DTOs.ProjResDTO;
+import com.IOE.cs.city_sync.DTOs.ProjectListDTO;
+import com.IOE.cs.city_sync.Services.DepartmentService;
 import com.IOE.cs.city_sync.Services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user/project")
 public class ProjectController {
@@ -17,10 +22,15 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private DepartmentService departmentService;
+
     @GetMapping("/upload")
     public String uploadProject(Model model) {
         ProjResDTO projResDTO = new ProjResDTO();
+        List<DepartmentListDTO> departmentListDTOS = departmentService.getAllDepartments();
         model.addAttribute("projResDTO", projResDTO);
+        model.addAttribute("departments", departmentListDTOS);
         return "UploadProject";
     }
 
@@ -29,5 +39,12 @@ public class ProjectController {
         System.out.println(projectDTO.toString());
         projectService.saveProjectResource(projectDTO);
         return "result";
+    }
+
+    @GetMapping("/showProjects")
+    public String showProjects(Model model){
+        List<ProjectListDTO> allProjects = projectService.showProjects();
+        model.addAttribute("allProjects", allProjects);
+        return "showProjects";
     }
 }

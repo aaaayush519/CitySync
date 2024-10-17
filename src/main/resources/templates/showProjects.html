@@ -13,19 +13,23 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Department Id</th>
+      <th scope="col">Project Name</th>
       <th scope="col">Department Name</th>
-      <th scope="col">Department Description</th>
-      <th scope="col">Department Contact No.</th>
+      <th scope="col">Project Location</th>
+      <th scope="col">Project Description</th>
+      <th scope="col">Project Start Date</th>
+      <th scope="col">Project End Date</th>
     </tr>
   </thead>
     <tbody>
-        <th:block th:each="department : ${departments}">
+        <th:block th:each="project : ${allProjects}">
             <tr>
-                <td scope="col" th:text="${department.id}"></td>
-                <td scope="col" th:text="${department.name}"></td>
-                <td scope="col" th:text="${department.description}"></td>
-                <td scope="col" th:text="${department.phoneNumber}"></td>
+                <td scope="col" th:text="${project.projectName}"></td>
+                <td scope="col" th:text="${project.departmentName}"></td>
+                <td scope="col" th:text="${project.location}"></td>
+                <td scope="col" th:text="${project.description}"></td>
+                <td scope="col" th:text="${project.startDate}"></td>
+                <td scope="col" th:text="${project.endDate}"></td>
             </tr>
         </th:block>
     </tbody>
