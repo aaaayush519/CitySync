@@ -5,6 +5,7 @@ import com.IOE.cs.city_sync.DTOs.ProjectListDTO;
 import com.IOE.cs.city_sync.DTOs.ResourceDTO;
 import com.IOE.cs.city_sync.Entities.Project;
 import com.IOE.cs.city_sync.Entities.Resource;
+import com.IOE.cs.city_sync.Repos.CSUserRepo;
 import com.IOE.cs.city_sync.Repos.DepartmentRepo;
 import com.IOE.cs.city_sync.Repos.ProjectRepo;
 import com.IOE.cs.city_sync.Repos.ResourceRepo;
@@ -20,6 +21,8 @@ public class ProjectService {
     private ProjectRepo projectRepo;
     @Autowired
     private ResourceRepo resourceRepo;
+    @Autowired
+    private CSUserRepo csUserRepo;
 
     @Autowired
     private DepartmentRepo departmentrepo;
@@ -54,5 +57,12 @@ public class ProjectService {
         return projectRepo.showProjects();
     }
 
-
+    public List<ProjectListDTO> myProjects(String username){
+        Integer deptId = csUserRepo.getDepartmentIdByUsername(username);
+        List<ProjectListDTO> myProjects = projectRepo.myProjects(deptId);
+        for(ProjectListDTO dto : myProjects){
+            System.out.println(myProjects.toString());
+        }
+        return myProjects;
+    }
 }

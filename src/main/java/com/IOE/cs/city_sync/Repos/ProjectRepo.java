@@ -4,6 +4,7 @@ import com.IOE.cs.city_sync.DTOs.ProjectListDTO;
 import com.IOE.cs.city_sync.Entities.Project;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,5 +20,9 @@ public interface ProjectRepo extends JpaRepository<Project, Integer> {
     @Query("Select new com.IOE.cs.city_sync.DTOs.ProjectListDTO(p.name , d.name , p.location , p.Description , p.startDate , p.endDate) from Project p " +
             "left join Department d ON p.department.id = d.id")
     List<ProjectListDTO> showProjects();
+
+    @Query("Select new com.IOE.cs.city_sync.DTOs.ProjectListDTO(p.name , d.name , p.location , p.Description , p.startDate , p.endDate) from Project p " +
+            "left join Department d ON p.department.id = d.id where p.department.id = :deptid")
+    List<ProjectListDTO> myProjects(@Param("deptid") Integer deptID);
 
 }

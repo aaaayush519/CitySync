@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -46,5 +47,13 @@ public class ProjectController {
         List<ProjectListDTO> allProjects = projectService.showProjects();
         model.addAttribute("allProjects", allProjects);
         return "showProjects";
+    }
+
+    @GetMapping("/myProjects")
+    public String myProjects(Principal user , Model model){
+        //System.out.println(user.getName());
+        List<ProjectListDTO> myProjects = projectService.myProjects(user.getName());
+        model.addAttribute("myProjects" , myProjects);
+        return "showMyProjects";
     }
 }
