@@ -1,11 +1,9 @@
 package com.IOE.cs.city_sync.Controllers;
 
-import com.IOE.cs.city_sync.DTOs.CSUserDTO;
-import com.IOE.cs.city_sync.DTOs.DepartmentDTO;
-import com.IOE.cs.city_sync.DTOs.DepartmentListDTO;
-import com.IOE.cs.city_sync.DTOs.UserListDTO;
+import com.IOE.cs.city_sync.DTOs.*;
 import com.IOE.cs.city_sync.Services.CSUserService;
 import com.IOE.cs.city_sync.Services.DepartmentService;
+import com.IOE.cs.city_sync.Services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +23,8 @@ public class AdminController {
     @Autowired
     private DepartmentService departmentService;
 
+    @Autowired
+    private MessageService messageService;
 
     @GetMapping("")
     public String adminPage(){
@@ -68,5 +68,10 @@ public class AdminController {
         return "result";
     }
 
-
+    @GetMapping("/showAllMessages")
+    public String showAllMessages(Model model){
+        List<MessageDTO> allMessages = messageService.getAllMessages();
+        model.addAttribute("allMessages" , allMessages);
+        return "showAllMessages";
+    }
 }

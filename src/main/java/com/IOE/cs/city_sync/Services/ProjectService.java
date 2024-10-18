@@ -3,12 +3,11 @@ package com.IOE.cs.city_sync.Services;
 import com.IOE.cs.city_sync.DTOs.ProjResDTO;
 import com.IOE.cs.city_sync.DTOs.ProjectListDTO;
 import com.IOE.cs.city_sync.DTOs.ResourceDTO;
+import com.IOE.cs.city_sync.DTOs.UserListDTO;
+import com.IOE.cs.city_sync.Entities.Message;
 import com.IOE.cs.city_sync.Entities.Project;
 import com.IOE.cs.city_sync.Entities.Resource;
-import com.IOE.cs.city_sync.Repos.CSUserRepo;
-import com.IOE.cs.city_sync.Repos.DepartmentRepo;
-import com.IOE.cs.city_sync.Repos.ProjectRepo;
-import com.IOE.cs.city_sync.Repos.ResourceRepo;
+import com.IOE.cs.city_sync.Repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,9 @@ public class ProjectService {
     private ProjectRepo projectRepo;
     @Autowired
     private ResourceRepo resourceRepo;
+
+    @Autowired
+    private MessageRepo messageRepo;
     @Autowired
     private CSUserRepo csUserRepo;
 
@@ -38,6 +40,17 @@ public class ProjectService {
         project.setUploadDate(LocalDate.now());
         project.setIsInterdepartmental(false);
         project.setLocation(projResDTO.getLocation());
+        List<UserListDTO> userListDTOs = csUserRepo.getAllUsers();
+
+        // added for sending notification
+        for(UserListDTO userListDTO : userListDTOs){
+            Message message = new Message();
+            message.setProject(project);
+            message.setRecepientUser(csUserRepo.findByUsername(userListDTO.getUsername()));
+            message.setResponse(false);
+            messageRepo.save(message);
+        }
+
         projectRepo.save(project);
 
         // Resource

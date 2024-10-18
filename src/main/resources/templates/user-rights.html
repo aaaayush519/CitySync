@@ -11,14 +11,8 @@
         crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand">User rights</a>
-  </div>
-  <button type="button" class="btn btn-danger">
-    <a th:href="@{/logout}" style="color: inherit; text-decoration: none;">Logout</a>
-  </button>
-</nav>
+<div th:replace="fragments/nav :: navbar"></div>
+
 <br /><br />
 <div class="container">
   <div class="row">
@@ -36,6 +30,9 @@
   </button>
   <button type="button" class="btn btn-primary">
     <a th:href="@{/user/project/myProjects}" style="color: inherit; text-decoration: none;">My Projects</a>
+  </button>
+  <button type="button" class="btn btn-primary">
+    <a th:href="@{/user/showMyMessages}" style="color: inherit; text-decoration: none;">Show Pending Projects</a>
   </button>
 </div>
 </body>

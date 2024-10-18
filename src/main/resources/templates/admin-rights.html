@@ -9,11 +9,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand">Administrator rights</a>
-  </div>
-</nav>
+<div th:replace="fragments/nav :: navbar"></div>
 
 <div class="container">
   <div class="row">
@@ -41,6 +37,9 @@
   </button>
   <button type="button" class="btn btn-primary">
     <a th:href="@{/user/project/showProjects}" style="color: inherit; text-decoration: none;">Show Projects</a>
+  </button>
+  <button type="button" class="btn btn-primary">
+    <a th:href="@{/admin/showAllMessages}" style="color: inherit; text-decoration: none;">Show All Messages</a>
   </button>
 </div>
 </body>

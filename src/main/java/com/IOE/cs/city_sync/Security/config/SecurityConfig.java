@@ -46,6 +46,10 @@ public class SecurityConfig {
                             .failureUrl("/login?error=true")
                             .permitAll();
                 })
+                .logout(logout->{
+                    logout.logoutSuccessUrl("/login")
+                            .permitAll();
+                })
                 .build();
     }
 
