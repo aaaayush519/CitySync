@@ -36,9 +36,9 @@ public class ProjectController {
     }
 
     @PostMapping("/submit")
-    public String projectSubmission(@ModelAttribute ProjResDTO projectDTO) {
+    public String projectSubmission(@ModelAttribute ProjResDTO projectDTO , Principal user) {
         System.out.println(projectDTO.toString());
-        projectService.saveProjectResource(projectDTO);
+        projectService.saveProjectResource(projectDTO,user.getName());
         return "result";
     }
 

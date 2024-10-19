@@ -32,6 +32,7 @@ public class UserController {
     public String userPage(){
         return "user-rights";
     }
+
     @GetMapping("/showDepartments")
     public String showDepartments(Model model){
         List<DepartmentListDTO> departments = departmentService.getAllDepartments();
@@ -42,9 +43,15 @@ public class UserController {
     @GetMapping("/showMyMessages")
     public String showMyMessages(Principal user , Model model){
         List<MessageDTO> myMessages = messageService.showMyMessages(user.getName());
-        System.out.println(user.getName());
         model.addAttribute("allMessages" , myMessages);
         return "showMessages";
+    }
+
+    @GetMapping("/ApprovedMessages")
+    public String showApprovedMessages(Principal user , Model model){
+        List<MessageDTO> approvedMessages = messageService.showApprovedMessages(user.getName());
+        model.addAttribute("approvedMessages" , approvedMessages);
+        return "showApprovedMessages";
     }
 
     @PostMapping("/update-Response")

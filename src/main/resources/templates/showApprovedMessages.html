@@ -22,17 +22,14 @@
     </thead>
     <tbody>
     <div th:replace="fragments/nav :: navbar"></div>
-    <th:block th:each="message : ${allMessages}">
+    <th:block th:each="message : ${approvedMessages}">
         <tr>
             <td scope="col" th:text="${message.projName}"></td>
             <td scope="col" th:text="${message.projLocation}"></td>
             <td scope="col" th:text="${message.projDescription}"></td>
             <td scope="col" th:text="${message.projDepartment}"></td>
             <td scope="col">
-                <form th:action="@{/user/update-Response}" method="post">
-                    <input type="hidden" name="messageId" th:value="${message.messageId}">
-                    <button type="submit" class="btn btn-primary"> Approve </button>
-                </form>
+                    <button type="submit" class="btn btn-success"> Approved </button>
             </td>
         </tr>
     </th:block>

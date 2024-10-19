@@ -27,15 +27,6 @@
                    th:field="*{location}">
         </div>
         <div class="col-6">
-            <label for="department" class="form-label">Owner Department</label>
-            <select id="department" class="form-select" th:field="*{departmentid}" required>
-                <option value="" selected>Select a Department</option>
-                <th:block th:each="department : ${departments}">
-                    <option th:value="${department.id}" th:text="${department.name}"></option>
-                </th:block>
-            </select>
-        </div>
-        <div class="col-6">
             <label for="start-date" class="form-label">Project Start Date</label>
             <input type="date" class="form-control" id="start-date" th:field="*{startDate}">
         </div>

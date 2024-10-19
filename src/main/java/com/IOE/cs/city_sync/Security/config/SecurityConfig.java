@@ -11,10 +11,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Bean
+    public CustomSuccessHandler successHandler() {
+        return new CustomSuccessHandler();
+    }
 
     @Autowired
     private CustomUserDetailsService userDetailsService;
@@ -30,10 +36,9 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
 //                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/").permitAll()
+
                         .requestMatchers("/css/**").permitAll()
                         .requestMatchers("/register").permitAll()
-                        .requestMatchers("/home").permitAll()
                         .requestMatchers("/user-submit").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasRole("USER")
@@ -42,7 +47,8 @@ public class SecurityConfig {
                 .formLogin(form -> {
                     form
                             .loginPage("/login")
-                            .defaultSuccessUrl("/user")
+                            .successHandler(successHandler())
+                            //.defaultSuccessUrl("/user")
                             .failureUrl("/login?error=true")
                             .permitAll();
                 })

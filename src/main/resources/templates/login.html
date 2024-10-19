@@ -14,6 +14,10 @@
 <div th:replace="fragments/nav :: navbar"></div>
 <div class="container my-40">
     <form th:action="@{/login}" method="post">
+
+
+
+
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text"  class="form-control" id="username"  placeholder="Enter username"  name="username">
@@ -27,8 +31,21 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
+
+        <label  class="btn btn-outline-primary" id="admin">
+            <a th:href="@{/admin}" style="color: inherit; text-decoration: none;">Sign in as admin</a>
+        </label>
+        <label  class="btn btn-outline-primary" id="role">
+            <a th:href="@{/user}" style="color: inherit; text-decoration: none;">Sign in as user</a>
+        </label>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<script>
+    document.getElementById("admin").onclick = function (){
+        this.classList.remove('btn-outline-primary');
+        this.classList.add('btn-primary');
+    };
+</script>
 </body>
 </html>

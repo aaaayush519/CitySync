@@ -29,11 +29,11 @@ public class ProjectService {
     @Autowired
     private DepartmentRepo departmentrepo;
 
-    public void saveProjectResource(ProjResDTO projResDTO) {
+    public void saveProjectResource(ProjResDTO projResDTO , String username) {
         Project project = new Project();
         project.setName(projResDTO.getProjectName());
-        project.setDepartment(departmentrepo.getDepartmentById(projResDTO.getDepartmentid()));
-        System.out.println("This is department"+project.getDepartment());                    // Marked
+        project.setDepartment(csUserRepo.getByUsername(username).getDepartment());
+        //System.out.println("This is department"+csUserRepo.getByUsername(username).getDepartment());                    // Marked
         project.setDescription(projResDTO.getProjDescription());
         project.setStartDate(projResDTO.getStartDate());
         project.setEndDate(projResDTO.getEndDate());
@@ -44,6 +44,9 @@ public class ProjectService {
 
         // added for sending notification
         for(UserListDTO userListDTO : userListDTOs){
+            if(userListDTO.getUsername().equals("admin")){
+                continue;
+            }
             Message message = new Message();
             message.setProject(project);
             message.setRecepientUser(csUserRepo.findByUsername(userListDTO.getUsername()));
@@ -73,9 +76,6 @@ public class ProjectService {
     public List<ProjectListDTO> myProjects(String username){
         Integer deptId = csUserRepo.getDepartmentIdByUsername(username);
         List<ProjectListDTO> myProjects = projectRepo.myProjects(deptId);
-        for(ProjectListDTO dto : myProjects){
-            System.out.println(myProjects.toString());
-        }
         return myProjects;
     }
 }
