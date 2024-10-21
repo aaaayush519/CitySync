@@ -37,7 +37,7 @@ public class CSUserService {
         csUserRepo.save(csUser);
     }
 
-    public List<UserListDTO> getAllUsers(){
+    public List<UserListDTO> getAllUsers() {
         return csUserRepo.getAllUsers();
     }
 

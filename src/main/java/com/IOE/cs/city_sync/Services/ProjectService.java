@@ -8,6 +8,7 @@ import com.IOE.cs.city_sync.Entities.Message;
 import com.IOE.cs.city_sync.Entities.Project;
 import com.IOE.cs.city_sync.Entities.Resource;
 import com.IOE.cs.city_sync.Repos.*;
+import com.IOE.cs.city_sync.enums.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class ProjectService {
     @Autowired
     private DepartmentRepo departmentrepo;
 
-    public void saveProjectResource(ProjResDTO projResDTO , String username) {
+    public void saveProjectResource(ProjResDTO projResDTO, String username) {
         Project project = new Project();
         project.setName(projResDTO.getProjectName());
         project.setDepartment(csUserRepo.getByUsername(username).getDepartment());
@@ -43,14 +44,14 @@ public class ProjectService {
         List<UserListDTO> userListDTOs = csUserRepo.getAllUsers();
 
         // added for sending notification
-        for(UserListDTO userListDTO : userListDTOs){
-            if(userListDTO.getUsername().equals("admin")){
+        for (UserListDTO userListDTO : userListDTOs) {
+            if (userListDTO.getUsername().equals("admin")) {
                 continue;
             }
             Message message = new Message();
             message.setProject(project);
             message.setRecepientUser(csUserRepo.findByUsername(userListDTO.getUsername()));
-            message.setResponse(false);
+            message.setResponse(Response.UNANSWERED);
             messageRepo.save(message);
         }
 
@@ -69,11 +70,11 @@ public class ProjectService {
         }
     }
 
-    public List<ProjectListDTO> showProjects(){
+    public List<ProjectListDTO> showProjects() {
         return projectRepo.showProjects();
     }
 
-    public List<ProjectListDTO> myProjects(String username){
+    public List<ProjectListDTO> myProjects(String username) {
         Integer deptId = csUserRepo.getDepartmentIdByUsername(username);
         List<ProjectListDTO> myProjects = projectRepo.myProjects(deptId);
         return myProjects;

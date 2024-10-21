@@ -15,18 +15,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Departments")
 public class Department {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
-	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "Description")
-	private String Description;
-	
-	@Column(name = "contact_no")
-	private Long PhoneNumber;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "Description")
+    private String Description;
+
+    @Column(name = "contact_no")
+    private Long PhoneNumber;
 }

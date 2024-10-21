@@ -7,24 +7,24 @@ import lombok.Data;
 @Entity
 @Table(name = "RESOURCES")
 public class Resource {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="ID")
-	private Integer id;
-	
-	@Column(name="NAME")
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private Integer id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Project_Id" , referencedColumnName = "id")
-	private Project project;
-	
-	@Column(name="DESCRIPTION")
-	private String Description;
-	
-	@Column(name="isAvailable")
-	private Boolean isAvailable;
-	
-	@Column(name="Quantity")
-	private String Quantity;
+    @Column(name = "NAME")
+    private String name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Project_Id", referencedColumnName = "id")
+    private Project project;
+
+    @Column(name = "DESCRIPTION")
+    private String Description;
+
+    @Column(name = "isAvailable")
+    private Boolean isAvailable;
+
+    @Column(name = "Quantity")
+    private String Quantity;
 }

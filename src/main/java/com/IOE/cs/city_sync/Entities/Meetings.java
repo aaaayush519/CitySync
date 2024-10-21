@@ -11,35 +11,35 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "MEETINGS")
 public class Meetings {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID")
-	private Integer id;
-	
-	@Column(name="MEETING_LOCATION")
-	private String location;
-	
-	@Column(name="AGENDA")
-	private String agenda;
-		
-	@Column(name="MEETING_DATE")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date meetingDate;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="PROJECT_ID", referencedColumnName = "id")
-	private Project project;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="ADDED_BY", referencedColumnName = "id")
-	private CSUser addedBy;  //// Will define the department
+    @Column(name = "MEETING_LOCATION")
+    private String location;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(
-			name = "meeting_department",
-			joinColumns = @JoinColumn(name = "MEETINGS_ID"),
-			inverseJoinColumns = @JoinColumn(name = "DEPARTMENT_ID")
-	)
-	private List<Department> participatingDepartment; // Saving the Participant's just with their id's for now 11-10-2024
+    @Column(name = "AGENDA")
+    private String agenda;
+
+    @Column(name = "MEETING_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date meetingDate;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PROJECT_ID", referencedColumnName = "id")
+    private Project project;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ADDED_BY", referencedColumnName = "id")
+    private CSUser addedBy;  //// Will define the department
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "meeting_department",
+            joinColumns = @JoinColumn(name = "MEETINGS_ID"),
+            inverseJoinColumns = @JoinColumn(name = "DEPARTMENT_ID")
+    )
+    private List<Department> participatingDepartment; // Saving the Participant's just with their id's for now 11-10-2024
 }

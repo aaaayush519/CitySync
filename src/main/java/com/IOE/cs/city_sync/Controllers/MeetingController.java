@@ -17,17 +17,18 @@ public class MeetingController {
 
     @Autowired
     MeetingService meetingService;
+
     @GetMapping("/upload")
-    public String scheduleMeeting(Model model){
+    public String scheduleMeeting(Model model) {
         MeetingsDTO meetingsDTO = new MeetingsDTO();
         model.addAttribute(meetingsDTO);
-        return "meeting";
+        return "user/meeting";
     }
 
     @PostMapping("/submit")
-    public String saveMeeting(@ModelAttribute MeetingsDTO meetingsDTO , Model model){
+    public String saveMeeting(@ModelAttribute MeetingsDTO meetingsDTO, Model model) {
         meetingService.addMeeting(meetingsDTO);
-        model.addAttribute("message" , "added meeting"+meetingsDTO);
-        return "result";
+        model.addAttribute("message", "added meeting" + meetingsDTO);
+        return "user/result";
     }
 }

@@ -2,14 +2,13 @@ package com.IOE.cs.city_sync.Repos;
 
 import com.IOE.cs.city_sync.DTOs.UserListDTO;
 import com.IOE.cs.city_sync.Entities.CSUser;
-import com.IOE.cs.city_sync.Entities.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface CSUserRepo extends JpaRepository<CSUser,Integer> {
+public interface CSUserRepo extends JpaRepository<CSUser, Integer> {
 
     CSUser save(CSUser csUser);
 
@@ -23,7 +22,7 @@ public interface CSUserRepo extends JpaRepository<CSUser,Integer> {
     List<UserListDTO> getAllUsers();
 
     @Query("Select u.department.id from CSUser u where u.username = :username")
-    Integer getDepartmentIdByUsername(@Param("username")String username);
+    Integer getDepartmentIdByUsername(@Param("username") String username);
 
     CSUser getByUsername(String username);
 }

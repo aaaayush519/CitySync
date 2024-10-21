@@ -1,5 +1,6 @@
 package com.IOE.cs.city_sync.Entities;
 
+import com.IOE.cs.city_sync.enums.Response;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class Message {
     private Integer id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PROJECT_ID" , referencedColumnName = "id")
+    @JoinColumn(name = "PROJECT_ID", referencedColumnName = "id")
     private Project project;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -26,5 +27,5 @@ public class Message {
     private CSUser recepientUser;
 
     @Column(name = "RESPONSE")
-    private boolean response;
+    private Response response;
 }

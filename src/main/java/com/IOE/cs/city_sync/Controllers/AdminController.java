@@ -27,51 +27,51 @@ public class AdminController {
     private MessageService messageService;
 
     @GetMapping("")
-    public String adminPage(){
-        return "admin-rights";
+    public String adminPage() {
+        return "admin/admin-rights";
     }
 
     @GetMapping({"/register-user"})
-    public String registerUser(Model model){
+    public String registerUser(Model model) {
         CSUserDTO csuserDto = new CSUserDTO();
         List<DepartmentListDTO> departmentListDTOS = departmentService.getAllDepartments();
-        model.addAttribute("departments" , departmentListDTOS);
+        model.addAttribute("departments", departmentListDTOS);
         model.addAttribute("csuserDto", csuserDto);
-        return "registerUser";
+        return "admin/registerUser";
     }
 
     @PostMapping("/add-user")
-    public String userSubmission(CSUserDTO csuserdto , Model model){
+    public String userSubmission(CSUserDTO csuserdto, Model model) {
         csUserService.addUser(csuserdto);
-        model.addAttribute("message","Signup successful for "+ csuserdto.getName());
-        return "result";
+        model.addAttribute("message", "Signup successful for " + csuserdto.getName());
+        return "user/result";
     }
 
     @GetMapping("/showUsers")
-    public String showUsers(Model model){
+    public String showUsers(Model model) {
         List<UserListDTO> allUsers = csUserService.getAllUsers();
-        model.addAttribute("users",allUsers);
-        return "showUsers";
+        model.addAttribute("users", allUsers);
+        return "admin/showUsers";
     }
 
     @GetMapping("/register-department")
-    public String registerDepartment(Model model){
+    public String registerDepartment(Model model) {
         DepartmentDTO departmentDto = new DepartmentDTO();
-        model.addAttribute("departmentdto" , departmentDto);
-        return "registerDept";
+        model.addAttribute("departmentdto", departmentDto);
+        return "admin/registerDept";
     }
 
     @PostMapping("/add-department")
-    public String addDepartment(DepartmentDTO departmentdto , Model model){
+    public String addDepartment(DepartmentDTO departmentdto, Model model) {
         departmentService.addDepartment(departmentdto);
-        model.addAttribute("message", "Deparatment Registration successful for"+departmentdto.getName());
-        return "result";
+        model.addAttribute("message", "Deparatment Registration successful for" + departmentdto.getName());
+        return "user/result";
     }
 
     @GetMapping("/showAllMessages")
-    public String showAllMessages(Model model){
+    public String showAllMessages(Model model) {
         List<MessageDTO> allMessages = messageService.getAllMessages();
-        model.addAttribute("allMessages" , allMessages);
-        return "showAllMessages";
+        model.addAttribute("allMessages", allMessages);
+        return "admin/showAllMessages";
     }
 }

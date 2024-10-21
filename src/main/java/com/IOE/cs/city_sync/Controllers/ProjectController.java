@@ -32,28 +32,27 @@ public class ProjectController {
         List<DepartmentListDTO> departmentListDTOS = departmentService.getAllDepartments();
         model.addAttribute("projResDTO", projResDTO);
         model.addAttribute("departments", departmentListDTOS);
-        return "UploadProject";
+        return "user/UploadProject";
     }
 
     @PostMapping("/submit")
-    public String projectSubmission(@ModelAttribute ProjResDTO projectDTO , Principal user) {
+    public String projectSubmission(@ModelAttribute ProjResDTO projectDTO, Principal user) {
         System.out.println(projectDTO.toString());
-        projectService.saveProjectResource(projectDTO,user.getName());
-        return "result";
+        projectService.saveProjectResource(projectDTO, user.getName());
+        return "user/result";
     }
 
     @GetMapping("/showProjects")
-    public String showProjects(Model model){
+    public String showProjects(Model model) {
         List<ProjectListDTO> allProjects = projectService.showProjects();
         model.addAttribute("allProjects", allProjects);
-        return "showProjects";
+        return "user/showProjects";
     }
 
     @GetMapping("/myProjects")
-    public String myProjects(Principal user , Model model){
-        //System.out.println(user.getName());
+    public String myProjects(Principal user, Model model) {
         List<ProjectListDTO> myProjects = projectService.myProjects(user.getName());
-        model.addAttribute("myProjects" , myProjects);
-        return "showMyProjects";
+        model.addAttribute("myProjects", myProjects);
+        return "user/showMyProjects";
     }
 }

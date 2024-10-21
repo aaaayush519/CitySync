@@ -17,10 +17,10 @@ public class UserListDTO {
 
     private String department;
 
-    public UserListDTO(String name , String email , Integer id, String username , String department){
+    public UserListDTO(String name, String email, Integer id, String username, String department) {
         this.name = name;
         this.email = email;
-        this.id = id ;
+        this.id = id;
         this.department = department;
         this.username = username;
     }

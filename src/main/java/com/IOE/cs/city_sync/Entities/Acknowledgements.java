@@ -17,25 +17,25 @@ import lombok.Data;
 @Table(name = "ACKNOWLEDGEMENTS")
 public class Acknowledgements {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID")
-	private Integer id;
-	
-	@Column(name="STATUS")
-	private Boolean status;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "PROJECT_ID", referencedColumnName = "id")
-	private Project Project;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "DEPARTMENT_ID", referencedColumnName = "id")
-	private Department DepartmentId;
-	
-	@Column(name="REMARK")
-	private String Remark;
-	
-	@Column(name="REMINDER_COUNT")
-	private Integer reminderCount;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
+
+    @Column(name = "STATUS")
+    private Boolean status;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PROJECT_ID", referencedColumnName = "id")
+    private Project Project;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "DEPARTMENT_ID", referencedColumnName = "id")
+    private Department DepartmentId;
+
+    @Column(name = "REMARK")
+    private String Remark;
+
+    @Column(name = "REMINDER_COUNT")
+    private Integer reminderCount;
 }

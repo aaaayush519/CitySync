@@ -1,6 +1,7 @@
 package com.IOE.cs.city_sync.DTOs;
 
 import com.IOE.cs.city_sync.Entities.CSUser;
+import com.IOE.cs.city_sync.enums.Response;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,7 @@ public class MessageDTO {
 
     private Integer messageId;
 
-    private Boolean response;
+    private Response response;
 
     private String username;
 
@@ -30,7 +31,7 @@ public class MessageDTO {
         this.projLocation = projLocation;
     }
      public MessageDTO(Integer messageId, String projName, String projDepartment, String projDescription, String projLocation
-             , String username , Boolean response) {
+             , String username , Response response) {
         this.username = username;
         this.response = response;
         this.messageId = messageId;
@@ -39,6 +40,4 @@ public class MessageDTO {
         this.projDescription = projDescription;
         this.projLocation = projLocation;
     }
-
-
 }

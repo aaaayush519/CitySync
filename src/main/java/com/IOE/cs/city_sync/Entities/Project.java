@@ -8,41 +8,41 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name="PROJECT")
+@Table(name = "PROJECT")
 public class Project {
 
-	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
-	@Column(name="ID")
-	private Integer id;
-	
-	@Column(name="NAME")
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "Department", referencedColumnName = "id")
-	private Department department;
-	
-	@Column(name="DESCRIPTION")
-	private String Description;
-	
-	@Column(name="LOCATION")
-	private String location;
+    @Column(name = "NAME")
+    private String name;
 
-	@Column(name="PROJECT_START_DATE")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate startDate;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Department", referencedColumnName = "id")
+    private Department department;
 
-	@Column(name="PROJECT_END_DATE")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate endDate;
+    @Column(name = "DESCRIPTION")
+    private String Description;
 
-	@Column(name="UPLOAD_DATE")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate uploadDate;
-	
-	@Column(name="isInterdepartmental")
-	private Boolean isInterdepartmental;
+    @Column(name = "LOCATION")
+    private String location;
+
+    @Column(name = "PROJECT_START_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate startDate;
+
+    @Column(name = "PROJECT_END_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
+
+    @Column(name = "UPLOAD_DATE")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate uploadDate;
+
+    @Column(name = "isInterdepartmental")
+    private Boolean isInterdepartmental;
 
 }
 

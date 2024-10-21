@@ -24,7 +24,7 @@ public class MeetingService {
     @Autowired
     private DepartmentRepo departmentRepo;
 
-    public void addMeeting(MeetingsDTO meetingsDTO){
+    public void addMeeting(MeetingsDTO meetingsDTO) {
         Meetings meetings = new Meetings();
         meetings.setLocation(meetingsDTO.getLocation());
         meetings.setAgenda(meetingsDTO.getAgenda());
@@ -32,7 +32,7 @@ public class MeetingService {
         meetings.setProject(projectRepo.getProjectById(meetingsDTO.getProjectId()));
 
         List<Department> participatingDepartments = new ArrayList<>();
-        for(Integer participatingDeptId : meetingsDTO.getParticipatingDeptId()){
+        for (Integer participatingDeptId : meetingsDTO.getParticipatingDeptId()) {
             participatingDepartments.add(departmentRepo.getDepartmentById(participatingDeptId));
         }
         meetings.setParticipatingDepartment(participatingDepartments);
