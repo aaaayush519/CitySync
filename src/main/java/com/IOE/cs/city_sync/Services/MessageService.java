@@ -35,4 +35,9 @@ public class MessageService {
         List<MessageDTO> allMessages = messageRepo.getAllMessages();
         return allMessages;
     }
+
+    public List<MessageDTO> myProjectResponse(Integer projectId) {
+        List<MessageDTO> myProjectResponses = messageRepo.myProjectResponses(projectId);
+        return myProjectResponses;
+    }
 }

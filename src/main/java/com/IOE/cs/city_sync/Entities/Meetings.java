@@ -27,19 +27,11 @@ public class Meetings {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date meetingDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PROJECT_ID", referencedColumnName = "id")
     private Project project;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ADDED_BY", referencedColumnName = "id")
-    private CSUser addedBy;  //// Will define the department
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "meeting_department",
-            joinColumns = @JoinColumn(name = "MEETINGS_ID"),
-            inverseJoinColumns = @JoinColumn(name = "DEPARTMENT_ID")
-    )
-    private List<Department> participatingDepartment; // Saving the Participant's just with their id's for now 11-10-2024
+    private CSUser addedBy;
 }

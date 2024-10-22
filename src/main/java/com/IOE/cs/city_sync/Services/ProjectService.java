@@ -45,7 +45,7 @@ public class ProjectService {
 
         // added for sending notification
         for (UserListDTO userListDTO : userListDTOs) {
-            if (userListDTO.getUsername().equals("admin")) {
+            if (userListDTO.getUsername().equals("admin") || userListDTO.getUsername().equals(username)) {
                 continue;
             }
             Message message = new Message();

@@ -1,5 +1,6 @@
 package com.IOE.cs.city_sync.DTOs;
 
+import com.IOE.cs.city_sync.Entities.CSUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 public class MeetingsDTO {
 
-
     private String location;
 
     private String agenda;
@@ -25,5 +25,5 @@ public class MeetingsDTO {
 
     private String addedBy;   // will define the Owner department
 
-    private List<Integer> participatingDeptId ;
+    private CSUser participatingUser;
 }

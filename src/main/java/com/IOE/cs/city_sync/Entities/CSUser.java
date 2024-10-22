@@ -35,6 +35,20 @@ public class CSUser {
         this.username = this.email.substring(0, this.email.indexOf('@'));
     }
 
+    @Column(name = "ROLE")
+    private String role;
+
+    public void setRole(String role) {
+        this.role = role.toUpperCase();
+    }
+
+    @Column(name = "PASSWORD")
+    private String password;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PART_USERS" ,referencedColumnName = "id")
+    private Meetings meeting;
+
     @Override
     public String toString() {
         return "CSUser{" +
@@ -47,27 +61,4 @@ public class CSUser {
                 '}';
     }
 
-    @Column(name = "ROLE")
-    private String role;
-
-    public void setRole(String role) {
-        this.role = role.toUpperCase();
-    }
-//	public CSUser(Integer id, String password, String role, String username, String email, Department department, String name) {
-//		this.id = id;
-//		this.password = password;
-//		this.role = role;
-//		this.username = email.substring(0,email.indexOf('@'));
-//		this.email = email;
-//		this.department = department;
-//		this.name = name;
-//	}
-
-//	public void setPassword(String password) {
-//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//		this.password = encoder.encode(password);
-//	}
-
-    @Column(name = "PASSWORD")
-    private String password;
 }

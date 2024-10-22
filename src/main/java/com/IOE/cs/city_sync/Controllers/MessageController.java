@@ -54,4 +54,11 @@ public class MessageController {
         messageService.updateByResponse(messageId, user.getName(), Response.APPROVE);
         return "redirect:/user/messages/showMyMessages";
     }
+
+    @GetMapping("/myProjects-Response")
+    public String myProjectResponse(@RequestParam("projectId") Integer projectId, Model model) {
+        List<MessageDTO> myProjectResponses = messageService.myProjectResponse(projectId);
+        model.addAttribute("myProjectResponses",myProjectResponses);
+        return "user/myProjectResponses";
+    }
 }

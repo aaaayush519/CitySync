@@ -27,6 +27,11 @@ public class AdminController {
     private MessageService messageService;
 
     @GetMapping("")
+    public String adminRole() {
+        return "admin/admin-role";
+    }
+
+    @GetMapping("/role")
     public String adminPage() {
         return "admin/admin-rights";
     }

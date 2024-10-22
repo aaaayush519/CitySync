@@ -17,11 +17,11 @@ public interface ProjectRepo extends JpaRepository<Project, Integer> {
 
     Project getProjectById(Integer projectId);
 
-    @Query("Select new com.IOE.cs.city_sync.DTOs.ProjectListDTO(p.name , d.name , p.location , p.Description , p.startDate , p.endDate) from Project p " +
+    @Query("Select new com.IOE.cs.city_sync.DTOs.ProjectListDTO(p.id , p.name , d.name , p.location , p.Description , p.startDate , p.endDate) from Project p " +
             "left join Department d ON p.department.id = d.id")
     List<ProjectListDTO> showProjects();
 
-    @Query("Select new com.IOE.cs.city_sync.DTOs.ProjectListDTO(p.name , d.name , p.location , p.Description , p.startDate , p.endDate) from Project p " +
+    @Query("Select new com.IOE.cs.city_sync.DTOs.ProjectListDTO(p.id , p.name , d.name , p.location , p.Description , p.startDate , p.endDate) from Project p " +
             "left join Department d ON p.department.id = d.id where p.department.id = :deptid")
     List<ProjectListDTO> myProjects(@Param("deptid") Integer deptID);
 

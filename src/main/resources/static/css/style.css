@@ -12,10 +12,6 @@ table {
     align-items: center;
 }
 
-.dropdown {
-    margin-right: 50px;
-}
-
-#logout {
+.navItem {
     margin-right: 50px;
 }

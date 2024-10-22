@@ -31,4 +31,11 @@ public class MeetingController {
         model.addAttribute("message", "added meeting" + meetingsDTO);
         return "user/result";
     }
+
+    @PostMapping("/addToMeeting")
+    public String addToMeeting(){
+        System.out.println("Hello");
+        // To write meeting's Service Layer
+        return "red";
+    }
 }

@@ -10,6 +10,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 
 public class ProjectListDTO {
+    private Integer projectId;
 
     private String projectName;
 
@@ -23,7 +24,8 @@ public class ProjectListDTO {
 
     private LocalDate endDate;
 
-    public ProjectListDTO(String projectName, String departmentName, String location, String description, LocalDate startDate, LocalDate endDate) {
+    public ProjectListDTO(Integer projectId , String projectName, String departmentName, String location, String description, LocalDate startDate, LocalDate endDate) {
+        this.projectId = projectId;
         this.projectName = projectName;
         this.departmentName = departmentName;
         this.location = location;

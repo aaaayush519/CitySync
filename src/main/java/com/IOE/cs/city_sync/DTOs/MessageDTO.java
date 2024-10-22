@@ -23,6 +23,7 @@ public class MessageDTO {
 
     private String projDepartment;
 
+
     public MessageDTO(Integer messageId, String projName, String projDepartment, String projDescription, String projLocation) {
         this.messageId = messageId;
         this.projName = projName;
@@ -39,5 +40,14 @@ public class MessageDTO {
         this.projDepartment = projDepartment;
         this.projDescription = projDescription;
         this.projLocation = projLocation;
+    }
+
+    public MessageDTO(Integer messageId, String projName,String projDepartment,String projLocation , String username , Response response) {
+        this.username = username;
+        this.response = response;
+        this.messageId = messageId;
+        this.projName = projName;
+        this.projLocation = projLocation;
+        this.projDepartment = projDepartment;
     }
 }
